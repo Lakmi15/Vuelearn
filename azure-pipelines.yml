@@ -7,12 +7,18 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
+  
+- task: CmdLine@2
+  inputs:
+    script: 'npm install'
+- task: CmdLine@3
+  inputs:
+    script: 'npm run build'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
